@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10174" systemVersion="15G1108" minimumToolsVersion="Xcode 7.0">
+    <entity name="CDCourse" representedClassName=".CDCourse" syncable="YES">
+        <attribute name="createdAt" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="id" attributeType="Integer 32" indexed="YES" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="updatedAt" optional="YES" attributeType="Date" syncable="YES"/>
+        <relationship name="lectures" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CDLecture" inverseName="course" inverseEntity="CDLecture" syncable="YES"/>
+    </entity>
+    <entity name="CDLecture" representedClassName=".CDLecture" syncable="YES">
+        <attribute name="createdAt" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="fileName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="id" attributeType="Integer 32" indexed="YES" syncable="YES"/>
+        <attribute name="localFileUrl" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="remoteUrl" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="serial_number" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="transcript_url" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="updatedAt" optional="YES" attributeType="Date" syncable="YES"/>
+        <relationship name="course" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDCourse" inverseName="lectures" inverseEntity="CDCourse" syncable="YES"/>
+        <relationship name="videos" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CDVideo" inverseName="lecture" inverseEntity="CDVideo" syncable="YES"/>
+    </entity>
+    <entity name="CDMessage" representedClassName=".CDMessage" syncable="YES">
+        <attribute name="author" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="content" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="createdAt" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="group" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="id" attributeType="Integer 32" indexed="YES" syncable="YES"/>
+        <attribute name="updatedAt" optional="YES" attributeType="Date" syncable="YES"/>
+    </entity>
+    <entity name="CDVideo" representedClassName=".CDVideo" syncable="YES">
+        <attribute name="createdAt" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="currentTime" optional="YES" attributeType="Double" defaultValueString="0" syncable="YES"/>
+        <attribute name="id" attributeType="Integer 32" indexed="YES" syncable="YES"/>
+        <attribute name="localFileUrl" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="remoteUrl" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="updatedAt" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="url" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="lecture" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDLecture" inverseName="videos" inverseEntity="CDLecture" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="CDCourse" positionX="-486" positionY="54" width="128" height="118"/>
+        <element name="CDLecture" positionX="-272" positionY="27" width="128" height="210"/>
+        <element name="CDMessage" positionX="-452" positionY="243" width="128" height="133"/>
+        <element name="CDVideo" positionX="-38" positionY="72" width="128" height="180"/>
+    </elements>
+</model>
